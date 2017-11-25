@@ -15,12 +15,12 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 def get_version():
     """Get version number from the root __init__ file."""
-    with open('pdf-progress/__init__.py') as version_file:
+    with open('pdf_progress/__init__.py') as version_file:
         return re.search(r"""__version__\s+=\s+(['"])(?P<version>.+?)\1""",
                          version_file.read()).group('version')
 
 
-install_requires = ['future']
+install_requires = ['future', 'PyPDF2']
 test_requires = ['pytest', 'pytest-sugar', 'pytest-asyncio', 'pytest-cov', ]
 setup(
     name='pdf-progress',
@@ -35,6 +35,11 @@ setup(
     zip_safe=False,
     author="Nitish Reddy Koripallu",
     download_url="".format(get_version()),
-    classifiers=[
-        "Programming Language :: Python :: 3.6", ]
+    classifiers=["Programming Language :: Python :: 3.6", ],
+    entry_points={
+        'console_scripts': [
+            'pdf-progress-wc=pdf_progress.word_count.main',
+            'pdf-progress-wc-mp=pdf_progress.word_count_mp.main',
+        ]
+    }
 )

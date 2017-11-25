@@ -1,3 +1,4 @@
+"""Setup file."""
 import re
 from codecs import open  # To use a consistent encoding
 from os import path
@@ -13,9 +14,11 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 
 def get_version():
+    """Get version number from the root __init__ file."""
     with open('pdf-progress/__init__.py') as version_file:
         return re.search(r"""__version__\s+=\s+(['"])(?P<version>.+?)\1""",
                          version_file.read()).group('version')
+
 
 install_requires = ['future']
 test_requires = ['pytest', 'pytest-sugar', 'pytest-asyncio', 'pytest-cov', ]

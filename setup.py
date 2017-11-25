@@ -33,13 +33,16 @@ setup(
     tests_require=test_requires,
     packages=find_packages(),
     zip_safe=False,
-    author="Nitish Reddy Koripallu",
+    author="Nitish Reddy Koripalli",
     download_url="".format(get_version()),
-    classifiers=["Programming Language :: Python :: 3.6", ],
+    classifiers=[
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.6",
+    ],
     entry_points={
         'console_scripts': [
-            'pdf-progress-wc=pdf_progress.word_count.main',
-            'pdf-progress-wc-mp=pdf_progress.word_count_mp.main',
+            'pdf-progress-wc=pdf_progress.word_count:main',
+            'pdf-progress-wc-mp=pdf_progress.word_count_mp:main',
         ]
     }
 )
